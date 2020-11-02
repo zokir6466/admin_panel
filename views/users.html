@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Users</title>
+</head>
+<body>
+
+	<h1 id="errorRef"></h1>
+
+	<ul id="usersRef">
+		
+	</ul>
+
+	<script type="text/javascript">
+
+		const errorRef = document.getElementById('errorRef')
+		const usersRef = document.getElementById('usersRef')
+
+		;(async () => {
+
+			const response = await fetch('http://localhost:4000/api/users', {
+				headers: {
+					access_token: window.localStorage.getItem('access_token')
+				},
+			})
+
+			const data = await response.json()
+
+			// if (!data) window.location.pathname = '/login'
+
+			if (data.error) {
+				errorRef.textContent = data.message + '. are you hacker?'
+			}
+			else {
+
+				for (let user of data.data) {
+
+					const userRef = document.createElement('LI')
+					const userLinkRef = document.createElement('A')
+
+					console.log(user)
+
+					userLinkRef.setAttribute('href', '/' + user.username)
+					userLinkRef.textContent = user.first_name + ' ' + user.last_name
+
+					userRef.appendChild(userLinkRef)
+
+					usersRef.appendChild(userRef)
+				}
+			}
+
+		})()
+		
+
+	</script>
+
+</body>
+</html>

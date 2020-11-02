@@ -1,0 +1,36 @@
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.fullBox {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.fullBox h1,
+.fullBox p {
+	margin-bottom: 1rem;
+}
+
+.fullBox div {
+	padding-bottom: 1rem;
+	display: flex;
+	justify-content: center;
+}
+
+form input,
+form button {
+	padding: 0.5rem 1rem;
+	border: 2px solid black;
+}
+.passChangerNone {
+	display: none;
+}
