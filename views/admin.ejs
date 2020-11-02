@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Admindashbord</title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <meta name="generator" content="Nicepage 2.28.1, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"url": "index.html"
+}</script>
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+  </head>
+  <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-overlap">
+    <header id="sec-0a5f"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-large-text u-text u-text-font u-text-variant u-text-1">Al-Khorazmiy</p>
+        <h5 class="u-align-left u-text u-text-default u-text-2">IT school</h5>
+      </div></header>
+      <div class="">
+        <form class="admin-panel" action="#" method="post">
+          <div class="input-box">
+            <label for="fname">Ism:</label><br>
+            <input type="text" name="fname" value="" id="fname" required>
+          </div>
+          <div class="input-box">
+            <label for="lname">Familiya:</label><br>
+            <input type="text" name="lname" value="" id="lname" required>
+          </div>
+          <div class="input-box">
+            <label for="phone">Telefon raqam:</label><br>
+            <input type="number" name="phone" value="" id="phone" required>
+          </div>
+          <div class="input-box">
+            <label for="email">Elektron manzil:</label><br>
+            <input type="email" name="email" value="" id="email" required>
+          </div>
+          <label for=""> </label>
+          <input type="submit" name="" value="Send" id="submit" class="submit">
+        </form>
+      </div>
+    <section class="u-align-center u-clearfix u-section-1" id="sec-e966">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width u-tab-links-align-left u-tabs u-tabs-1">
+          <ul class="u-border-2 u-border-palette-1-base u-spacing-10 u-tab-list u-unstyled" role="tablist">
+            <li class="u-tab-item" role="presentation">
+              <a class="active u-active-palette-1-base u-button-style u-grey-10 u-tab-link u-text-active-white u-text-black u-tab-link-1" id="link-tab-0da5" href="#tab-0da5" role="tab" aria-controls="tab-0da5" aria-selected="true">01-14<br>
+              </a>
+            </li>
+          </ul>
+          <div class="u-tab-content">
+            <div class="u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="tab-0da5" role="tabpanel" aria-labelledby="link-tab-0da5">
+              <div class="u-container-layout u-container-layout-1">
+                <div class="u-expanded-width u-table u-table-responsive u-table-1">
+                  <table class="u-table-entity u-table-entity-1">
+                    <colgroup>
+                      <col width="3.5%">
+                      <col width="24%">
+                      <col width="20%">
+                      <col width="15.9%">
+                      <col width="36.6%">
+                    </colgroup>
+                    <tbody class="u-table-alt-grey-5 u-table-body">
+                      <tr style="height: 46px;">
+                        <td class="u-table-cell">№<br>
+                        </td>
+                        <td class="u-table-cell">Ism Familiya</td>
+                        <td class="u-table-cell"></td>
+                        <td class="u-table-cell">Telefon raqam</td>
+                        <td class="u-table-cell">Elektron manzil</td>
+                      </tr>
+                      <% let o = 0 ;%>
+                      <% for(let x of users) {%>
+
+                          <tr class="xa" style="height: 46px;">
+                            <td class="u-table-cell"><%= o+1 %><br>
+                            </td>
+                            <td class="u-table-cell"><%= x.fname + ' ' + x.lname %></td>
+                            <td class="u-table-cell"></td>
+                            <td class="u-table-cell"><%= '+998' + x.phone %></td>
+                            <td class="u-table-cell"><%= x.email %></td>
+                            <td><button type="" class="icon-remove" onclick="kik(<%= o %>, <%= x.id %>)"><img src="/images/icon_del.svg" class="btn-del" id="btt"></button></td>
+                          </tr>
+
+                      <% o++ }%>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-align-left u-clearfix u-section-2" id="sec-863b">
+      <div class="u-clearfix u-sheet u-sheet-1"></div>
+    </section>
+<script>
+
+function kik(x, y) {
+  let data = JSON.stringify({"id": y})
+  let config = {
+    method: 'delete',
+    url: 'http://localhsot:4000/admindashbord',
+    headers: {
+     'Content-Type' : 'application/json'
+    },
+    data: data
+  };
+  axios(config)
+  .then(function(response) {
+    console.log(response);
+  })
+  .catch(function(error) {
+    console.log(error);
+  })
+}
+
+
+</script>
+</body>
+</html>
